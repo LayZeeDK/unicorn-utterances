@@ -53,7 +53,7 @@ export default defineConfig({
 			// Remove complaining about "div cannot be in p element"
 			remarkUnwrapImages,
 			/* start remark plugins here */
-			[behead, { after: 0, depth: 1 }],
+			[behead, { depth: 1 }],
 			// // TODO: Enable
 			// [
 			// 	remarkEmbedder as any,
