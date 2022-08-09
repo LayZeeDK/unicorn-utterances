@@ -43,7 +43,7 @@ const fullUnicorns: UnicornInfo[] = unicornsRaw.map((unicorn) => {
   // Mutation go BRR
   const newUnicorn: UnicornInfo = unicorn as never;
 
-  newUnicorn.profileImg = {
+  newUnicorn.profileImgMeta = {
     height: profileImgSize.height as number,
     width: profileImgSize.width as number,
     relativePath: unicorn.profileImg,
@@ -51,11 +51,11 @@ const fullUnicorns: UnicornInfo[] = unicornsRaw.map((unicorn) => {
     absoluteFSPath,
   };
 
-  newUnicorn.roles = unicorn.roles.map(
+  newUnicorn.rolesMeta = unicorn.roles.map(
     (role) => rolesRaw.find((rRole) => rRole.id === role)!
   );
 
-  newUnicorn.pronouns = pronounsRaw.find(
+  newUnicorn.pronounsMeta = pronounsRaw.find(
     (proWithNouns) => proWithNouns.id === unicorn.pronouns
   )!;
 
