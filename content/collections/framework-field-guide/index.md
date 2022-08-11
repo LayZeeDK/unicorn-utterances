@@ -7,6 +7,7 @@
   coverImg: "./cover.png",
   socialImg: "/framework_field_guide_social.png",
   type: "book",
+  aboveFoldMarkdown: "above.md",
   published: "2023-01-01T13:45:00.284Z",
   buttons: [{ text: "Get Notified of Release", url: "https://mailinglist.unicorn-utterances.com/subscribe" }],
   chapterList: [
@@ -81,17 +82,22 @@ const Hello = () => {
 ```typescript
 @Component({
   selector: "my-app",
-  template: `<p>Hello, world!</p>`
+  template: `<p>Hello, world!</p>`,
+  standalone: true
 })
 class HelloWorldComp {}
 ```
 
 # Vue
 
-```javascript
-const Hello = {
-	template: `<p>Hello, world!</p>`
-}
+```vue
+<!-- Hello.vue -->
+<template>
+  <p>Hello, world!</p>
+</template>
+
+<script setup>
+</script>
 ```
 
 <!-- tabs:end -->
