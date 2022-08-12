@@ -13,6 +13,8 @@ import { rehypeAstroImageMd } from "./src/utils/markdown/rehype-astro-image-md";
 import { rehypeUnicornElementMap } from "./src/utils/markdown/rehype-unicorn-element-map";
 import { rehypeExcerpt } from "./src/utils/markdown/rehype-excerpt";
 import { rehypeUnicornPopulatePost } from "./src/utils/markdown/rehype-unicorn-populate-post";
+import { rehypeWordCount } from "./src/utils/markdown/rehype-word-count";
+import {rehypeUnicornGetSuggestedPosts} from "./src/utils/markdown/rehype-unicorn-get-suggested-posts";
 
 // TODO: Create types
 import behead from "remark-behead";
@@ -43,10 +45,11 @@ export default defineConfig({
         {
           transformers: [oembedTransformer, [TwitchTransformer, { parent }]],
         } as RemarkEmbedderOptions,
-      ],
+      ]
     ],
     rehypePlugins: [
       rehypeUnicornPopulatePost,
+      rehypeUnicornGetSuggestedPosts,
       // This is required to handle unsafe HTML embedded into Markdown
       rehypeRaw,
       // Do not add the tabs before the slug. We rely on some of the heading
@@ -82,7 +85,8 @@ export default defineConfig({
       rehypeUnicornElementMap,
       [rehypeExcerpt, {
         maxLength: 150
-      }]
+      }],
+      rehypeWordCount
     ],
   } as AstroUserConfig["markdown"] as never,
 });

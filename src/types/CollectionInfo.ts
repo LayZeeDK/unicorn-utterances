@@ -34,4 +34,5 @@ export interface CollectionInfo {
     description: string;
     order: string;
   }>;
+  aboveFoldMarkdown?: string;
 }
