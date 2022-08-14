@@ -30,6 +30,7 @@ scoreboard objectives add fennifith.animals_spawned dummy
 
 This creates an objective named `fennifith.animals_spawned` that is connected to the `dummy` game statistic. We'll talk about this more later on, but this effectively means the scoreboard will only be modified if you set its values yourself.
 
+<<<<<<< HEAD
 ## Scoreboard conventions
 
 ### Namespaced objective names
@@ -44,6 +45,8 @@ Typically, all data packs will create any scoreboards they need in a `load.mcfun
 
 Some data packs additionally create an `uninstall.mcfunction` file, not connected to any function tag, that can be executed to remove all of the data pack's scoreboard objectives. This is useful for when a player wants to remove your datapack from their world without leaving any of its behavior behind.
 
+=======
+>>>>>>> 90bf3d3792fd2974c7178657f5ccefa99814d525
 ## Setting values
 
 We can set values of this scoreboard using the `/scoreboard players` subcommands. Most of these subcommands accept two arguments for the `<targets>` and `<objective>` of the score to change. For example, the following command will set our entry in the `fennifith.animals_spawned` table to `1`.
@@ -205,6 +208,7 @@ Here is a list of all the other operations that can be performed with this comma
 - `>` sets `lhs` to `rhs` only if `rhs` is *larger*
 - `><` swaps the values of `lhs` and `rhs`
 
+<<<<<<< HEAD
 > While both sides of these operations accept entity selectors, only `lhs` can refer to multiple entities. For example, `@e[type=pig]` could be used to set the scoreboards of every pig entity in the game.
 >
 > In `rhs`, you may need to add a `limit=1` attribute to limit the number of entities that it can select.
@@ -234,6 +238,11 @@ tellraw @a ["You have summoned ",{"score":{"name":"@s","objective":"fennifith.an
 # Tracking statistics
 
 Scoreboards can also be created to track *game statistics*, such as a number of blocks mined or number of times an item has been used. These can be found in the game by opening the pause menu in any world or server and clicking the "Statistics" button - and the names used to reference them can be found [on the Minecraft wiki](https://minecraft.fandom.com/wiki/Scoreboard#Criteria).
+=======
+# Tracking statistics
+
+Scoreboards can also be created to track *game statistics*, such as a number of blocks mined or number of times an item has been used. These can be found in the game by opening the pause menu in any world or server and clicking the "Statistics" button.
+>>>>>>> 90bf3d3792fd2974c7178657f5ccefa99814d525
 
 We can use any statistic as the second argument of `/scoreboard objectives add` - for example:
 
@@ -241,9 +250,13 @@ We can use any statistic as the second argument of `/scoreboard objectives add` 
 scoreboard objectives add fennifith.animals_carrot_stick minecraft.used:minecraft.carrot_on_a_stick
 ```
 
+<<<<<<< HEAD
 > **Note:** These statistics are only tracked for players! While we can still manipulate scoreboard values for other entities using commands, non-player entities do not have statistics, and their objectives will not be updated when an action is performed.
 
 While this scoreboard will be updated when its statistic changes, its entries can also be individually changed by the data pack, so it might not necessarily reflect the same value as the statistic at all times.
+=======
+While this scoreboard will be updated by its statistic changes, its entries can also be individually changed in the scoreboard, so it might not necessarily reflect the same value as the statistic at all times.
+>>>>>>> 90bf3d3792fd2974c7178657f5ccefa99814d525
 
 For example, we can create the scoreboard above to track the number of times a "Carrot on a Stick" has been used. If we then set our entry to `0` in that scoreboard, its value will stay at `0`, regardless of the player's statistic for that item. If the player then uses the "Carrot on a Stick" again, the statistic and the scoreboard will both increase by 1.
 
@@ -255,15 +268,21 @@ In the previous article, you may have noticed the `/execute if score` subcommand
 
 1. We first need to create our scoreboard when our data pack is loaded by the game - so we'll place the following line in our `load.mcfunction`:
 	```shell
+<<<<<<< HEAD
 	# data/fennifith/functions/animals/load.mcfunction
 
+=======
+>>>>>>> 90bf3d3792fd2974c7178657f5ccefa99814d525
 	# create a new scoreboard tracking the "carrot_on_a_stick" statistic
 	scoreboard objectives add fennifith.animals_carrot_stick minecraft.used:minecraft.carrot_on_a_stick
 	```
 2. Then, we can place a command in `tick.mcfunction` to run our `fennifith:animals/spawn` function if the scoreboard has a value >= 1.
 	```shell
+<<<<<<< HEAD
 	# data/fennifith/functions/animals/tick.mcfunction
 
+=======
+>>>>>>> 90bf3d3792fd2974c7178657f5ccefa99814d525
 	#       for every player in the game...
 	#       |     if their score for "carrot_stick" is >= 1
 	#       |     |                                                      spawn some animals
@@ -275,6 +294,7 @@ In the previous article, you may have noticed the `/execute if score` subcommand
 	# set the "carrot_stick" score for all players to 0
 	scoreboard players set @a fennifith.animals_carrot_stick 0
 	```
+<<<<<<< HEAD
 
 # Examples of scoreboard functionality
 
@@ -310,3 +330,5 @@ execute as @a run scoreboard players operation $max fennifith.animals_spawned > 
 > This introduces a small caveat of using entity selectors: they will only apply to any entity *that is currently alive and on the server.*
 >
 > When a player entity logs off, or a non-player entity is killed/despawned or in an unloaded chunk, there is no longer any way to reference it with an entity selector. While this does not cause problems for most functionality, it is important to remember that the results might not always be perfectly accurate in actual usage.
+=======
+>>>>>>> 90bf3d3792fd2974c7178657f5ccefa99814d525
